@@ -1,7 +1,7 @@
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import express from 'express';
-import { existsSync, readdirSync, unlinkSync } from 'fs';
+import { existsSync, mkdirSync, readdirSync, unlinkSync } from 'fs';
 import helmet from 'helmet';
 import morgan from 'morgan';
 import { join } from 'path';
@@ -18,6 +18,8 @@ if (devEnv && existsSync(logsDirectory)) {
 	const files = readdirSync(logsDirectory);
 	files.forEach(file => unlinkSync(join(logsDirectory, file)));
 }
+// Ensure that logs directory exist
+existsSync(logsDirectory) || mkdirSync(logsDirectory);
 // Create a rotating write stream
 const accessLogStream = rfs('server.log', {
 	interval: '1d', // Rotate daily

@@ -14,6 +14,7 @@ This server is intended for SPAs (Single Page Applications) as Angular, React, V
 This API has this routes:
 
 - GET `/api/v1/hello/:name` => name is a param (Example: http://localhost:3000/api/v1/hello/ivan).
+- GET `/api/v1/mock-file` => returns markup mock file data from this Github repository project.
 
 ## Configuration
 
